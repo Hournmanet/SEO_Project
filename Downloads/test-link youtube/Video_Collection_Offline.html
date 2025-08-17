@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .video-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 via-blue-800 to-indigo-700 min-h-screen p-4">
+    <div class="container mx-auto py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">📺 Video Collection</h1>
+            <p class="text-xl text-blue-200">Click any video to watch</p>
+        </header>
+
+        <!-- Video Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Video 1 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 1</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/bsHfY5qdYzA" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 2</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/RF1-IAgvsO8" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 3</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/eqT2aMVrSdk" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 4</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/ACCRYqtfYs4" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 5</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/sL4YKWXIswY" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 6</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/H8-w1yA0qjA" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 7</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/4SEYalJoa2A" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg video-card">
+                <div class="p-2 bg-indigo-600 text-white text-center font-bold">Video 8</div>
+                <div class="p-4">
+                    <a href="https://youtu.be/3ZsTU8B-4MU" target="_blank" 
+                       class="block w-full bg-red-600 hover:bg-red-700 text-white text-center font-semibold py-2 px-4 rounded-lg transition-colors">
+                        ▶ Watch Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
