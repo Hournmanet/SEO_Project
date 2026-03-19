@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "fabpot/goutte": "^4.0"
+        "fabpot/goutte": "^4.0",
+        "mpdf/mpdf": "^8.3"
     }
 }
