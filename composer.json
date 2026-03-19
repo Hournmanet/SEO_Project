@@ -1,0 +1,14 @@
+{
+    "name": "seo/project",
+    "description": "An SEO analysis and optimization tool",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trae AI"
+        }
+    ],
+    "require": {
+        "fabpot/goutte": "^4.0"
+    }
+}
