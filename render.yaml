@@ -1,3 +1,4 @@
+# render.yaml
 databases:
   - name: seo-db
     databaseName: seo_project_db
@@ -7,8 +8,11 @@ databases:
 services:
   - type: web
     name: seo-project
-    env: docker
+    env: php
     plan: free
+    buildCommand: "composer install --no-dev --optimize-autoloader"
+    startCommand: "php -S 0.0.0.0:$PORT"
+    autoDeploy: true
     envVars:
       - key: DB_HOST
         fromDatabase:
