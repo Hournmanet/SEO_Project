@@ -8,10 +8,8 @@ databases:
 services:
   - type: web
     name: seo-project
-    env: php
+    env: docker
     plan: free
-    buildCommand: "composer install --no-dev --optimize-autoloader"
-    startCommand: "php -S 0.0.0.0:$PORT"
     autoDeploy: true
     envVars:
       - key: DB_HOST
