@@ -1,3 +1,9 @@
+databases:
+  - name: seo-db
+    databaseName: seo_project_db
+    user: postgres
+    plan: free
+
 services:
   - type: web
     name: seo-project
@@ -5,12 +11,22 @@ services:
     plan: free
     envVars:
       - key: DB_HOST
-        value: postgres # Replace this later once you create a Render DB
+        fromDatabase:
+          name: seo-db
+          property: host
       - key: DB_PORT
-        value: "5432"
+        fromDatabase:
+          name: seo-db
+          property: port
       - key: DB_NAME
-        value: seo_project_db
+        fromDatabase:
+          name: seo-db
+          property: database
       - key: DB_USER
-        value: postgres
+        fromDatabase:
+          name: seo-db
+          property: user
       - key: DB_PASS
-        value: YOUR_PASSWORD_HERE # Replace with real password later
+        fromDatabase:
+          name: seo-db
+          property: password
