@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd zip pgsql pdo_pgsql
+    && docker-php-ext-install gd zip pgsql pdo_pgsql
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
@@ -23,6 +23,9 @@ WORKDIR /var/www/html
 
 # Copy application files
 COPY . .
+
+# Prevent Composer out-of-memory errors on Render Free Tier
+ENV COMPOSER_MEMORY_LIMIT=-1
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
