@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: seo-project
+    env: docker
+    plan: free
+    envVars:
+      - key: DB_HOST
+        value: postgres # Replace this later once you create a Render DB
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_NAME
+        value: seo_project_db
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASS
+        value: YOUR_PASSWORD_HERE # Replace with real password later
