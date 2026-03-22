@@ -19,6 +19,8 @@ $init_query = "
 CREATE TABLE IF NOT EXISTS pages (
     id SERIAL PRIMARY KEY,
     url VARCHAR(255) NOT NULL,
+    keyword VARCHAR(255),
+    page_title TEXT,
     page_speed DECIMAL(10, 4),
     meta_description TEXT,
     keyword_coverage DECIMAL(5,2),
@@ -37,6 +39,8 @@ CREATE TABLE IF NOT EXISTS pages (
 @pg_query($db_connection, $init_query);
 
 // Also apply ALTER TABLE just in case they have an old version of the table
+@pg_query($db_connection, "ALTER TABLE pages ADD COLUMN IF NOT EXISTS keyword VARCHAR(255);");
+@pg_query($db_connection, "ALTER TABLE pages ADD COLUMN IF NOT EXISTS page_title TEXT;");
 @pg_query($db_connection, "ALTER TABLE pages ADD COLUMN IF NOT EXISTS h1_tags TEXT;");
 @pg_query($db_connection, "ALTER TABLE pages ADD COLUMN IF NOT EXISTS h2_tags TEXT;");
 @pg_query($db_connection, "ALTER TABLE pages ADD COLUMN IF NOT EXISTS h3_tags TEXT;");

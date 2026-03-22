@@ -58,16 +58,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {
     // --- 3. ANALYSIS USING DomCrawler ---
     $crawler = new Crawler($html_content, $url);
 
+    $title_node = $crawler->filter('title');
+    $page_title = $title_node->count() > 0 ? $title_node->text() : 'Missing';
+
     $meta_description_node = $crawler->filter('meta[name="description"]');
     $meta_description = $meta_description_node->count() > 0 ? $meta_description_node->attr('content') : 'Missing';
 
     $image_count = $crawler->filter('img')->count();
 
-    $keywords = ['seo', 'optimization', 'website', 'marketing'];
+    $keyword = isset($_POST['keyword']) ? strtolower(trim($_POST['keyword'])) : '';
+    $keywords = $keyword ? [$keyword] : ['seo', 'optimization', 'website', 'marketing'];
     $body_text = strtolower($crawler->filter('body')->text());
     $found_keywords = 0;
-    foreach ($keywords as $keyword) {
-        if (strpos($body_text, $keyword) !== false) {
+    foreach ($keywords as $kw) {
+        if (strpos($body_text, $kw) !== false) {
             $found_keywords++;
         }
     }
@@ -118,9 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {
     $seo_score = max(0, $score);
 
     // --- 4. SAVE TO DATABASE ---
-    $query = 'INSERT INTO pages (url, page_speed, meta_description, image_count, keyword_coverage, broken_links, seo_score, missing_alt_tags, h1_tags, h2_tags, h3_tags, has_ssl, og_title, og_image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)';
+    $query = 'INSERT INTO pages (url, keyword, page_title, page_speed, meta_description, image_count, keyword_coverage, broken_links, seo_score, missing_alt_tags, h1_tags, h2_tags, h3_tags, has_ssl, og_title, og_image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)';
     pg_query_params($db_connection, $query, [
-        $url, (int)$page_speed, $meta_description, $image_count, (int)$keyword_coverage, $broken_links, $seo_score, $missing_alt_tags_text,
+        $url, $keyword, $page_title, (int)$page_speed, $meta_description, $image_count, (int)$keyword_coverage, $broken_links, $seo_score, $missing_alt_tags_text,
         implode('|', $h1_tags), implode('|', $h2_tags), implode('|', $h3_tags), $has_ssl ? 't' : 'f', $og_title, $og_image
     ]);
 
@@ -131,6 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {
     $response = [
         'id' => $last_id,
         'url' => $url,
+        'page_title' => $page_title,
+        'keyword' => $keyword,
         'page_speed' => $page_speed,
         'meta_description' => $meta_description,
         'image_count' => $image_count,
