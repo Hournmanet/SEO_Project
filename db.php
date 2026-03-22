@@ -6,9 +6,15 @@ $dbname = getenv('DB_NAME') ?: 'SEO_Project(backup)';
 $user = getenv('DB_USER') ?: 'postgres'; 
 $password = getenv('DB_PASS') ?: 'Maneth99'; 
 
-$conn_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
+$conn_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password} sslmode=require";
 
-$db_connection = pg_connect($conn_string);
+$db_connection = @pg_connect($conn_string);
+
+if (!$db_connection) {
+    // Fallback without SSL for local development
+    $conn_string_no_ssl = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
+    $db_connection = pg_connect($conn_string_no_ssl);
+}
 
 if (!$db_connection) {
     die("Error: Cannot connect to the Database. Please check your credentials or Environment Variables.");
