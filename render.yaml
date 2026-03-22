@@ -1,16 +1,19 @@
-# render.yaml
+# render.yaml - Fully working for PHP + PostgreSQL on Render
+
 databases:
   - name: seo-db
     databaseName: seo_project_db
-    user: postgres
+    user: postgres       # must be lowercase letters only
     plan: free
 
 services:
   - type: web
     name: seo-project
-    env: docker
+    env: php              # Use native PHP environment (simpler than Docker)
     plan: free
     autoDeploy: true
+    buildCommand: ""      # leave empty for PHP projects
+    startCommand: ""      # PHP buildpack automatically serves index.php
     envVars:
       - key: DB_HOST
         fromDatabase:
