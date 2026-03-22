@@ -1,17 +1,16 @@
-# render.yaml - Working PHP + PostgreSQL Blueprint for Render
+# render.yaml - Optimized Docker + PostgreSQL Blueprint for Render
 databases:
   - name: seo-db
     databaseName: seo_project_db
-    user: postgres
     plan: free
 
 services:
   - type: web
     name: seo-project
-    env: php
+    env: docker
     plan: free
     autoDeploy: true
-    startCommand: php -S 0.0.0.0:10000 -t .
+    # Docker uses EXPOSE in Dockerfile, so we don't need startCommand here
     envVars:
       - key: DB_HOST
         fromDatabase:
