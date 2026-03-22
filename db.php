@@ -2,7 +2,7 @@
 // Use Environment Variables for Vercel, fallback to localhost for local development
 $host = getenv('DB_HOST') ?: 'localhost';
 $port = getenv('DB_PORT') ?: '5432';
-$dbname = getenv('DB_NAME') ?: 'SEO_Project'; 
+$dbname = getenv('DB_NAME') ?: 'SEO_Project(backup)'; 
 $user = getenv('DB_USER') ?: 'postgres'; 
 $password = getenv('DB_PASS') ?: 'Maneth99'; 
 
