@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {
     // --- 4. SAVE TO DATABASE ---
     $query = 'INSERT INTO pages (url, keyword, page_title, page_speed, meta_description, image_count, keyword_coverage, broken_links, seo_score, missing_alt_tags, h1_tags, h2_tags, h3_tags, has_ssl, og_title, og_image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)';
     pg_query_params($db_connection, $query, [
-        $url, $keyword, $page_title, (int)$page_speed, $meta_description, $image_count, (int)$keyword_coverage, $broken_links, $seo_score, $missing_alt_tags_text,
+        $url, $keyword, $page_title, $page_speed, $meta_description, $image_count, (int)$keyword_coverage, $broken_links, $seo_score, $missing_alt_tags_text,
         implode('|', $h1_tags), implode('|', $h2_tags), implode('|', $h3_tags), $has_ssl ? 't' : 'f', $og_title, $og_image
     ]);
 
